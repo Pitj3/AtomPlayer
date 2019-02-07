@@ -52,6 +52,7 @@ body {
 }
 
 #main {
+	position: relative;
     height: calc(100% - 32px);
     margin-top: 32px;
     padding: 20px;
@@ -109,4 +110,27 @@ body {
 
 #window-controls #close-button {
     grid-column: 3;
+}
+
+.video-js .vjs-tech {
+	width: unset;
+	height: unset;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.video-outter {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+
+.video-js {
+    width: 100%;
+    height: 100%;
 }
