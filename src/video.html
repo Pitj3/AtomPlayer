@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Atom Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
+
+    <script type="application/javascript">
+    </script>
+</head>
+<body>
+<header id="titlebar">
+    <div id="drag-region">
+        <div id="window-title">
+            <span>Atom Player</span>
+        </div>
+        <div id="window-controls">
+            <div class="button" id="min-button">
+                <span>&#xE921;</span>
+            </div>
+            <div class="button" id="max-button">
+                <span>&#xE922;</span>
+            </div>
+            <div class="button" id="restore-button">
+                <span>&#xE923;</span>
+            </div>
+            <div class="button" id="close-button">
+                <span>&#xE8BB;</span>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="main">
+    <video id='video-player' class='video-js vjs-default-skin' width="100%" height="100%" controls autoplay preload='auto'
+           poster='../assets/cosmos.jpg' data-setup=''>
+        <source src='../assets/cosmos.mkv' type='video/mp4' >
+        <track kind="captions" src="../assets/cosmos.vtt" srclang="en" label="English" default>
+    </video>
+
+    <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
+</div>
+<script>
+    // You can also require other files to run in this process
+    require('./titlebar.js');
+    require('./autoplay.js');
+</script>
+</body>
+</html>
