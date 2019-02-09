@@ -63,7 +63,6 @@
     "webpack": "4.28.4"
   },
   "peerDependencies": {
-    "less": "^3.7.1",
-    "moment": "^2.22.2"
+    "less": "^3.7.1"
   }
 }
