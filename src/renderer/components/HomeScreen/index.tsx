@@ -37,7 +37,9 @@ export default class HomeScreen extends React.Component<Props, State> {
                     id: (i + 1),
                     name: "Cosmos" + i,
                     description: "Neil Degrass Tyson naked",
-                    imageUrl: "cosmos.jpg"
+                    imagePath: "cosmos.jpg",
+					captionsPath: "cosmos.vtt",
+					path: "cosmos.mp4"
                 });
             }
 
@@ -50,19 +52,13 @@ export default class HomeScreen extends React.Component<Props, State> {
     componentWillUnmount() {
 
     }
-    
-    onWatch = async (event) => {
-        await EventManager.dispatchAsync("navigate", {
-            screen: AppScreens.Info
-        });
-    }
 
     onSelect = (id: number) => async (event) => {
         const selectedItem = this.state.items.find((item) => item.id === id);
 
         if (selectedItem == null)
             return;
-        
+
         await EventManager.dispatchAsync("navigate", {
             screen: AppScreens.Info,
             screenData: selectedItem

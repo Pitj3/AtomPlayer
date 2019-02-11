@@ -29,7 +29,7 @@ export default class MediaItem extends React.Component<Props, State> {
     componentWillUnmount() {
 
     }
-    
+
     onSelect = (event) => {
         if (this.props.onSelect != null)
             this.props.onSelect();
@@ -41,11 +41,11 @@ export default class MediaItem extends React.Component<Props, State> {
         let imageUrl = "";
 
         const { item } = this.props;
-        
+
         if (item != null) {
             name = item.name;
             description = item.description;
-            imageUrl = item.imageUrl;
+            imageUrl = item.imagePath;
         }
 
         const pathToAsset = path.join(__static, "/assets");

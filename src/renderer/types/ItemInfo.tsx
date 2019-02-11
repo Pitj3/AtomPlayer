@@ -3,5 +3,7 @@ export default interface ItemInfo {
     id: number;
     name: string;
     description: string;
-    imageUrl: string;
+    imagePath: string;
+	captionsPath: string;
+	path: string;
 }

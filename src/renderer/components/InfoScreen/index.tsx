@@ -12,6 +12,7 @@ import ItemInfo from "../../types/ItemInfo";
 declare var __static;
 
 interface Props {
+	item: ItemInfo;
 }
 
 interface State {
@@ -32,10 +33,11 @@ export default class InfoScreen extends React.Component<Props, State> {
     componentWillUnmount() {
 
     }
-    
+
     onWatch = async (event) => {
         await EventManager.dispatchAsync("navigate", {
-            screen: AppScreens.Watch
+            screen: AppScreens.Watch,
+			screenData: this.props.item
         });
     }
 
