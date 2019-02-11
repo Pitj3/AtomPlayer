@@ -10,6 +10,8 @@ import { EventManager } from "../../utils/EventManager";
 import ItemInfo from "../../types/ItemInfo";
 import MediaItem from "./components/MediaItem";
 
+import sqlite3 from "sqlite3";
+
 declare var __static;
 
 interface Props {
@@ -30,18 +32,28 @@ export default class HomeScreen extends React.Component<Props, State> {
 
     componentWillMount() {
         setTimeout(() => {
+            const pathToAsset = path.join(__static, "/assets");
+
+            let db = new sqlite3.Database(pathToAsset + '/movies.db', (err) => {
+                if(err) {
+                    alert(err);
+                }
+                console.log('Connected to database');
+            });
+
             let items: ItemInfo[] = [];
 
-            for (let i = 0; i < 25; ++i) {
+            db.each("SELECT * FROM movies", function(err, row) {
                 items.push({
-                    id: (i + 1),
-                    name: "Cosmos" + i,
-                    description: "Neil Degrass Tyson naked",
-                    imagePath: "cosmos.jpg",
-					captionsPath: "cosmos.vtt",
-					path: "cosmos.mp4"
+                    id: row.id,
+                    name: row.name,
+                    description: row.description,
+                    imagePath: row.coverimage,
+					captionsPath: row.subpath,
+                    path: row.videopath,
+                    type: row.type
                 });
-            }
+              });
 
             this.setState({
                 items: items

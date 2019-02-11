@@ -5,5 +5,6 @@ export default interface ItemInfo {
     description: string;
     imagePath: string;
 	captionsPath: string;
-	path: string;
+    path: string;
+    type: string;
 }

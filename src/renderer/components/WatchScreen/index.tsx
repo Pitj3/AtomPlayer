@@ -34,7 +34,8 @@ export default class WatchScreen extends React.Component<Props, State> {
 
     onNavigateBack = async (event) => {
         await EventManager.dispatchAsync("navigate", {
-            screen: AppScreens.Home
+            screen: AppScreens.Info,
+            screenData: this.props.item
         });
     }
 
@@ -47,7 +48,7 @@ export default class WatchScreen extends React.Component<Props, State> {
                           onNavigateBack={this.onNavigateBack}>
                 <div className="video-outter">
                     <video id="video-player" autoPlay className="video-js vjs-default-skin" width="100%" height="100%" controls preload="auto" poster={pathToAsset + "/" + item.imagePath} data-setup="">
-                        <source src={pathToAsset + "/" + item.path} type='video/mp4' />
+                        <source src={pathToAsset + "/" + item.path} type={'video/' + item.type} />
                         <track kind="captions" src={pathToAsset + "/" + item.captionsPath} label="English" default />
                     </video>
                 </div>
