@@ -9,6 +9,10 @@ import './styles.less';
 const remote = require('electron').remote;
 
 interface Props {
+    canNavigateBack?: boolean;
+    canNavigateForward?: boolean;
+    onNavigateBack?: Function;
+    onNavigateForward?: Function;
 }
 
 interface State {
@@ -39,6 +43,11 @@ export default class WindowLayout extends React.Component<Props, State> {
 
     }
     
+    onBackClick = (event) => {
+        if (this.props.onNavigateBack != null)
+            this.props.onNavigateBack();
+    }
+
     onMinimizeClick = (event) => {
         this.appWindow.minimize();
     }
@@ -67,28 +76,36 @@ export default class WindowLayout extends React.Component<Props, State> {
         const isMaximized = this.state.isMaximized;
 
         return (
-            <div className="window-layout">
+            <div className="windowLayout">
                 <header id="titlebar">
-                    <div id="drag-region">
-                        <div id="window-title">
+                    <div id="dragRegion">
+                        {this.props.canNavigateBack &&
+                            <div id="navControls">
+                                <div className="button" id="backButton" onClick={this.onBackClick}>
+                                    <span>&#xE72B;</span>
+                                </div>
+                            </div>
+                        }
+                        
+                        <div id="windowTitle">
                             <span>Atom Player</span>
                         </div>
-                        <div id="window-controls">
-                            <div className="button" id="min-button" onClick={this.onMinimizeClick}>
+                        <div id="windowControls">
+                            <div className="button" id="minButton" onClick={this.onMinimizeClick}>
                                 <span>&#xE921;</span>
                             </div>
 
                             {(isMaximized ?
-                                <div className="button" id="restore-button" onClick={this.onRestoreClick}>
+                                <div className="button" id="restoreButton" onClick={this.onRestoreClick}>
                                     <span>&#xE923;</span>
                                 </div>
                             :
-                                <div className="button" id="max-button" onClick={this.onMaximizeClick}>
+                                <div className="button" id="maxButton" onClick={this.onMaximizeClick}>
                                     <span>&#xE922;</span>
                                 </div>
-                            )}                            
-                            
-                            <div className="button" id="close-button" onClick={this.onCloseClick}>
+                            )}
+
+                            <div className="button" id="closeButton" onClick={this.onCloseClick}>
                                 <span>&#xE8BB;</span>
                             </div>
                         </div>

@@ -14,6 +14,9 @@ function createMainWindow() {
     {
       width: 1280,
       height: 1024,
+      minWidth: 240,
+      minHeight: 340,
+      title: "Atom Player",
       backgroundColor: "#17181C",
       fullscreen: false,
       frame: false,

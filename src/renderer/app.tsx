@@ -2,25 +2,20 @@ import React 	from 'react';
 
 const {ipcRenderer} = require('electron');
 
-// Components
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import MainWindow from './components/MainWindow';
-
-// Styles
 import './app.less';
+import ScreenManager from './components/ScreenManager';
+import { EventManager } from './utils/EventManager';
+import { AppScreens } from './types/AppScreens';
 
 const theme = createMuiTheme({
 	palette: {
 		primary: {
-			light: '#9c4dcc',
-			main: '#512da8',
-			dark: '#4b20b5',
+			main: '#fff',
 			contrastText: '#fff',
 		},
 		secondary: {
-			light: '#ffc046',
-			main: '#ffa129',
-			dark: '#e28f24',
+			main: '#616161',
 			contrastText: '#232323',
 		},
 		text: {
@@ -123,6 +118,7 @@ const theme = createMuiTheme({
 });
 
 interface State {
+	
 }
 
 // Application wrapper, which is the parent of all components in the main screen. Handles kiosk
@@ -136,7 +132,12 @@ export default class App extends React.Component<{}, State> {
 	}
 
 	componentDidMount() {
-		
+		setTimeout(async () => {
+			// Navigate to the home screen.
+			await EventManager.dispatchAsync("navigate", {
+				screen: AppScreens.Home
+			});
+		}, 400);
 	}
 
 	componentWillUnmount() {
@@ -146,7 +147,7 @@ export default class App extends React.Component<{}, State> {
 	render() {
 		return (
 			<MuiThemeProvider theme={theme}>
-				<MainWindow />
+				<ScreenManager />
 			</MuiThemeProvider>
 		)
 	}
