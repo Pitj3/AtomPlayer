@@ -43,7 +43,7 @@ export default class WatchScreen extends React.Component<Props, State> {
             <WindowLayout canNavigateBack
                           onNavigateBack={this.onNavigateBack}>
                 <div className="video-outter">
-                    <video id="video-player" className="video-js vjs-default-skin" width="100%" height="100%" controls preload="auto" poster={pathToAsset + "/cosmos.jpg"} data-setup="">
+                    <video id="video-player" autoPlay className="video-js vjs-default-skin" width="100%" height="100%" controls preload="auto" poster={pathToAsset + "/cosmos.jpg"} data-setup="">
                         <source src={pathToAsset + "/cosmos.mp4"} type='video/mp4' />
                         <track kind="captions" src={pathToAsset + "/cosmos.vtt"} label="English" default />
                     </video>

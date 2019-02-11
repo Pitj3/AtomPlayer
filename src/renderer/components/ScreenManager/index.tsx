@@ -7,6 +7,7 @@ import { AppScreens } from "../../types/AppScreens";
 import { EventManager } from "../../utils/EventManager";
 import HomeScreen from "../HomeScreen";
 import WatchScreen from "../WatchScreen";
+import InfoScreen from "../InfoScreen";
 
 declare var __static;
 
@@ -133,6 +134,10 @@ export default class ScreenManager extends React.Component<Props, State> {
 
             case AppScreens.Watch:
                 screen = <WatchScreen />;
+                break;
+
+            case AppScreens.Info:
+                screen = <InfoScreen />;
                 break;
 
             default:

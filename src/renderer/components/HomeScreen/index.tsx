@@ -35,7 +35,7 @@ export default class HomeScreen extends React.Component<Props, State> {
             for (let i = 0; i < 25; ++i) {
                 items.push({
                     id: (i + 1),
-                    name: "Cosmos",
+                    name: "Cosmos" + i,
                     description: "Neil Degrass Tyson naked",
                     imageUrl: "cosmos.jpg"
                 });
@@ -53,7 +53,7 @@ export default class HomeScreen extends React.Component<Props, State> {
     
     onWatch = async (event) => {
         await EventManager.dispatchAsync("navigate", {
-            screen: AppScreens.Watch
+            screen: AppScreens.Info
         });
     }
 
@@ -64,7 +64,7 @@ export default class HomeScreen extends React.Component<Props, State> {
             return;
         
         await EventManager.dispatchAsync("navigate", {
-            screen: AppScreens.Watch,
+            screen: AppScreens.Info,
             screenData: selectedItem
         });
     }
