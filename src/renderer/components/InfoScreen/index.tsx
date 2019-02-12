@@ -54,11 +54,36 @@ export default class InfoScreen extends React.Component<Props, State> {
     }
 
     render() {
+		const pathToAsset = path.join(__static, "/assets").replace(/\\/g, "/");
+		const item = this.props.item;
+
         return (
             <WindowLayout canNavigateBack
-            onNavigateBack={this.onNavigateBack}>
-                <div className="item-list">
-                    {this.renderItems()}
+            			onNavigateBack={this.onNavigateBack}>
+                <div className="info-screen">
+                    <div className="background-image" style={{backgroundImage: "url(" + pathToAsset + "/" + item.backgroundPath + ")"}}>
+					</div>
+
+					<div className="title">
+						<Typography variant="h3" color="primary">
+							{this.props.item.name}
+						</Typography>
+					</div>
+					<div className="cover-image-outter">
+						<img className="cover-image" src={pathToAsset + "/" + item.imagePath} />
+					</div>
+
+					<div className="info-panel">
+						<div className="description">
+							<Typography color="primary" variant="subtitle2">
+								An exploration of our discovery of the laws of nature and coordinates in space and time.
+							</Typography>
+
+							<Button className="play-button" variant="contained" onClick={this.onWatch}>
+								Play
+							</Button>
+						</div>
+					</div>
                 </div>
             </WindowLayout>
         );

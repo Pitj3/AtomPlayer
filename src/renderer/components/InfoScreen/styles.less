@@ -1,3 +1,64 @@
-.item-list {
-    text-align: center;
+.info-screen {
+    .background-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-size: cover;
+		background-repeat: no-repeat;
+		filter: blur(14px) opacity(0.6);
+	}
+
+	.title {
+		margin-top: 24px;
+		text-align: center;
+	}
+
+	.cover-image-outter {
+		position: absolute;
+		top: 20vh;
+		left: 10vw;
+		bottom: 20vh;
+		max-width: 50vw;
+		text-align: center;
+
+		.cover-image {
+			width: auto;
+			height: 100%;
+			overflow: hidden;
+			border-radius: 8px;
+			box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2),
+						0px 1px 1px 0px rgba(0,0,0,0.14),
+						0px 2px 1px -1px rgba(0,0,0,0.12);
+		}
+	}
+
+	.info-panel {
+		position: absolute;
+		top: 38vh;
+		right: 0;
+		bottom: 38vh;
+		width: 40vw;
+		text-align: center;
+		overflow: hidden;
+		background-color: rgba(14, 14, 14, 0.568);
+		border-top-left-radius: 12px;
+		border-bottom-left-radius: 12px;
+		border-top: 1px solid #3a3a3a;
+		border-left: 1px solid #3a3a3a;
+		border-bottom: 1px solid #3a3a3a;
+
+		.description {
+			margin: 12px;
+			padding: 6px;
+			height: 20vh;
+			overflow-y: auto;
+		}
+
+		.play-button {
+			width: 200px;
+			margin-top: 34px;
+		}
+	}
 }

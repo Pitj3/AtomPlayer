@@ -49,6 +49,7 @@ export default class HomeScreen extends React.Component<Props, State> {
                     name: row.name,
                     description: row.description,
                     imagePath: row.coverimage,
+					backgroundPath: row.backgroundimage,
 					captionsPath: row.subpath,
                     path: row.videopath,
                     type: row.type

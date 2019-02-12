@@ -4,6 +4,7 @@ export default interface ItemInfo {
     name: string;
     description: string;
     imagePath: string;
+	backgroundPath: string;
 	captionsPath: string;
     path: string;
     type: string;
